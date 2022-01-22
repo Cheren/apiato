@@ -35,14 +35,15 @@
         "ext-tokenizer": "*",
         "apiato/core": "^6.2.5",
         "apiato/documentation-generator-container": "^1.0.0",
-        "apiato/welcome-container": "^1.0.0",
         "doctrine/dbal": "^3.1.2",
         "fideloper/proxy": "^4.4.1",
         "fruitcake/laravel-cors": "^1.0.6",
         "guzzlehttp/guzzle": "^7.3.0",
         "laravel/framework": "^8.73.0",
         "laravel/tinker": "^2.6.0",
-        "wikimedia/composer-merge-plugin": "^2.0.1"
+        "wikimedia/composer-merge-plugin": "^2.0.1",
+        "jbzoo/simpletypes": "^2.2",
+        "jbzoo/data": "^4.4"
     },
     "require-dev": {
         "ext-intl": "*",
@@ -98,7 +99,11 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "apiato/container-installer": true,
+            "wikimedia/composer-merge-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

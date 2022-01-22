@@ -26,4 +26,6 @@ aliases
 .php_cs.cache
 /app/Containers/Vendor
 /public/vendor
-
+composer.lock
+package-lock.json
+.env.example
