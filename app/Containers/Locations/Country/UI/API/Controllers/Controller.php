@@ -48,6 +48,15 @@ class Controller extends ApiController
         return $this->transform($country, CountryTransformer::class);
     }
 
+    /**
+     * Action get all countries.
+     *
+     * @param   GetAllCountriesRequest $request
+     *
+     * @return  array
+     *
+     * @throws  InvalidTransformerException
+     */
     public function getAllCountries(GetAllCountriesRequest $request): array
     {
         $countries = app(GetAllCountriesAction::class)->run($request);
