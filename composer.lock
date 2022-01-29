@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "72f234b8e6f27d08974aee9391b3262c",
+    "content-hash": "131e933c8fa65d55014885c1eda0a7b7",
     "packages": [
         {
             "name": "apiato/container-installer",
@@ -160,6 +160,39 @@
                 "source": "https://github.com/apiato/documentation-generator-container/tree/v1.0.0"
             },
             "time": "2021-04-25T14:46:27+00:00"
+        },
+        {
+            "name": "apiato/welcome-container",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apiato/welcome-container.git",
+                "reference": "ca7b1d265f137700840b75a18020093cee5d2ff1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apiato/welcome-container/zipball/ca7b1d265f137700840b75a18020093cee5d2ff1",
+                "reference": "ca7b1d265f137700840b75a18020093cee5d2ff1",
+                "shasum": ""
+            },
+            "type": "apiato-container",
+            "extra": {
+                "apiato": {
+                    "container": {
+                        "name": "Welcome"
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An Apiato container which welcomes the user in different languages! And it is also an example of a container extracted using container installer!",
+            "support": {
+                "issues": "https://github.com/apiato/welcome-container/issues",
+                "source": "https://github.com/apiato/welcome-container/tree/v1.0.0"
+            },
+            "time": "2021-04-25T14:28:36+00:00"
         },
         {
             "name": "asm89/stack-cors",
