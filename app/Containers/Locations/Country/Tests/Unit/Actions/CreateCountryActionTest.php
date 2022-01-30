@@ -18,12 +18,17 @@ use App\Containers\Locations\Country\Actions\CreateCountryAction;
 class CreateCountryActionTest extends TestCase
 {
 
+    protected array $data = [
+        'name' => 'My country',
+        'params' => ['key' => 'value']
+    ];
+
     public function testOnFailed(): void
     {
-        $request = new Request();
+        $request = new CreateCountryActionRequest();
 
         $this->expectException(CreateResourceFailedException::class);
-        App::make(CreateCountryAction::class)->run($request);
+        $this->getAction()->run($request);
     }
 
     public function testOnSuccess(): void
@@ -31,10 +36,10 @@ class CreateCountryActionTest extends TestCase
         $request = $this->getRequest();
 
         /** @var Country $country */
-        $country = App::make(CreateCountryAction::class)->run($request);
+        $country = $this->getAction()->run($request);
 
         $this->assertInstanceOf(Country::class, $country);
-        $this->assertSame('My country', $country->name);
+        $this->assertSame($this->data['name'], $country->name);
         $this->assertInstanceOf(JSON::class, $country->params);
         $this->assertSame('value', $country->params->get('key'));
     }
@@ -44,29 +49,24 @@ class CreateCountryActionTest extends TestCase
         $request = $this->getRequest();
 
         /** @var Country $country */
-        $country = App::make(CreateCountryAction::class)->run($request);
+        $country = $this->getAction()->run($request);
         $this->assertInstanceOf(Country::class, $country);
 
         $this->expectException(CreateResourceFailedException::class);
-        App::make(CreateCountryAction::class)->run($request);
+        $this->getAction()->run($request);
     }
 
-    protected function getRequest(array $data = []): Request
+    private function getAction()
     {
-        $data = array_replace_recursive([
-            'name' => 'My country',
-            'params' => ['key' => 'value']
-        ], $data);
+        return App::make(CreateCountryAction::class);
+    }
 
-        return new Request($data);
+    private function getRequest(array $data = []): CreateCountryActionRequest
+    {
+        return new CreateCountryActionRequest($this->getData($data));
     }
 }
 
-/**
- * Class Request
- *
- * @package App\Containers\Locations\Country\Tests\Unit\Actions
- */
-class Request extends AbstractRequest
+class CreateCountryActionRequest extends AbstractRequest
 {
 }

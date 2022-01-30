@@ -34,7 +34,7 @@ class CreateCountryTask extends Task
     }
 
     /**
-     * Run action.
+     * Run create county action.
      *
      * @param   array $data
      *

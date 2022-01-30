@@ -17,7 +17,7 @@ class CreateCountryAction extends Action
 {
 
     /**
-     * Run action.
+     * Run create country action.
      *
      * @param   Request $request
      *

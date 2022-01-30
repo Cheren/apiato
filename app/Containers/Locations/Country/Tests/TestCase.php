@@ -2,6 +2,7 @@
 
 namespace App\Containers\Locations\Country\Tests;
 
+use App\Ship\Traits\DefaultReplacedDataTrait;
 use App\Ship\Parents\Tests\PhpUnit\TestCase as ShipTestCase;
 
 /**
@@ -11,4 +12,7 @@ use App\Ship\Parents\Tests\PhpUnit\TestCase as ShipTestCase;
  */
 class TestCase extends ShipTestCase
 {
+
+    use DefaultReplacedDataTrait;
+
 }
