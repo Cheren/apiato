@@ -17,19 +17,30 @@ class JSON implements CastsAttributes
     /**
      * Transform the attribute from the underlying model values.
      *
-     * @param   Model $model
-     * @param   string $key
-     * @param   mixed $value
-     * @param   array $attributes
+     * @param   Model   $model
+     * @param   string  $key
+     * @param   mixed   $value
+     * @param   array   $attributes
      *
-     * @return  JsonData
+     * @return  string
      */
     public function get($model, string $key, $value, array $attributes)
     {
-        return new JsonData($value);
+        return $value;
     }
 
+    /**
+     * Transform the attribute to its underlying model values.
+     *
+     * @param  Model    $model
+     * @param  string   $key
+     * @param  mixed    $value
+     * @param  array    $attributes
+     *
+     * @return JsonData
+     */
     public function set($model, string $key, $value, array $attributes)
     {
+        return new JsonData($value);
     }
 }

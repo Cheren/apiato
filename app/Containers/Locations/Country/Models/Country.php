@@ -2,6 +2,7 @@
 
 namespace App\Containers\Locations\Country\Models;
 
+use JBZoo\Data\JSON as JsonData;
 use App\Ship\Database\Casts\JSON;
 use App\Ship\Parents\Models\Model;
 
@@ -10,7 +11,7 @@ use App\Ship\Parents\Models\Model;
  *
  * @property-read int       $id
  * @property-read string    $name
- * @property-read JSON      $params
+ * @property-read JsonData  $params
  *
  * @package App\Containers\Locations\Country\Models
  */
