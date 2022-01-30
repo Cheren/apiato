@@ -25,7 +25,7 @@ class CreateCountryActionTest extends TestCase
 
     public function testOnFailed(): void
     {
-        $request = new CreateCountryActionRequest();
+        $request = new CreateCountryActionRequestTest();
 
         $this->expectException(CreateResourceFailedException::class);
         $this->getAction()->run($request);
@@ -61,12 +61,12 @@ class CreateCountryActionTest extends TestCase
         return App::make(CreateCountryAction::class);
     }
 
-    private function getRequest(array $data = []): CreateCountryActionRequest
+    private function getRequest(array $data = []): CreateCountryActionRequestTest
     {
-        return new CreateCountryActionRequest($this->getData($data));
+        return new CreateCountryActionRequestTest($this->getData($data));
     }
 }
 
-class CreateCountryActionRequest extends AbstractRequest
+class CreateCountryActionRequestTest extends AbstractRequest
 {
 }

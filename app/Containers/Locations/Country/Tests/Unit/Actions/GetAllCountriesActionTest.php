@@ -18,7 +18,7 @@ class GetAllCountriesActionTest extends TestCase
 
     public function testGetAll()
     {
-        $result = $this->getAction()->run(new GetAllCountriesActionRequest());
+        $result = $this->getAction()->run(new GetAllCountriesActionTestRequest());
         $this->assertInstanceOf(LengthAwarePaginator::class, $result);
     }
 
@@ -28,6 +28,6 @@ class GetAllCountriesActionTest extends TestCase
     }
 }
 
-class GetAllCountriesActionRequest extends Request
+class GetAllCountriesActionTestRequest extends Request
 {
 }

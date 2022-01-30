@@ -2,11 +2,9 @@
 
 namespace App\Containers\Locations\Country\Tests\Unit\Actions;
 
-use Apiato\Core\Traits\HashIdTrait;
-use App\Ship\Exceptions\UpdateResourceFailedException;
 use Illuminate\Support\Facades\App;
-use App\Containers\Locations\Country\Models\Country;
 use App\Containers\Locations\Country\Tests\TestCase;
+use App\Ship\Exceptions\UpdateResourceFailedException;
 use App\Ship\Parents\Requests\Request as AbstractRequest;
 use App\Containers\Locations\Country\Tasks\CreateCountryTask;
 use App\Containers\Locations\Country\Actions\UpdateCountryAction;
@@ -32,7 +30,7 @@ class UpdateCountryActionTest extends TestCase
             'name' => 'Russia'
         ]);
 
-        $request = new UpdateCountryActionRequest([
+        $request = new UpdateCountryActionTestRequest([
             'id' => $country->id,
             'name' => 'USA',
             'params' => [
@@ -51,7 +49,7 @@ class UpdateCountryActionTest extends TestCase
 
     public function testNotFindForUpdate()
     {
-        $request = new UpdateCountryActionRequest([
+        $request = new UpdateCountryActionTestRequest([
             'id' => 123,
             'name' => 'Ukraine'
         ]);
@@ -66,6 +64,6 @@ class UpdateCountryActionTest extends TestCase
     }
 }
 
-class UpdateCountryActionRequest extends AbstractRequest
+class UpdateCountryActionTestRequest extends AbstractRequest
 {
 }

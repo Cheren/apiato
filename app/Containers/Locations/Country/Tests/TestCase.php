@@ -14,5 +14,4 @@ class TestCase extends ShipTestCase
 {
 
     use DefaultReplacedDataTrait;
-
 }
