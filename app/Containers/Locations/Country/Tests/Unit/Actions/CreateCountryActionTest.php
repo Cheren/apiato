@@ -56,7 +56,7 @@ class CreateCountryActionTest extends TestCase
         $this->getAction()->run($request);
     }
 
-    private function getAction()
+    private function getAction(): CreateCountryAction
     {
         return App::make(CreateCountryAction::class);
     }
