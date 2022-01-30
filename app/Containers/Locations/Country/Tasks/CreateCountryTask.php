@@ -4,6 +4,7 @@ namespace App\Containers\Locations\Country\Tasks;
 
 use Exception;
 use App\Ship\Parents\Tasks\Task;
+use App\Containers\Locations\Country\Models\Country;
 use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Containers\Locations\Country\Data\Repositories\CountryRepository;
 
@@ -37,11 +38,11 @@ class CreateCountryTask extends Task
      *
      * @param   array $data
      *
-     * @return  mixed
+     * @return  Country
      *
      * @throws  CreateResourceFailedException
      */
-    public function run(array $data)
+    public function run(array $data): Country
     {
         try {
             return $this->repository->create($data);
