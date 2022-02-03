@@ -2,31 +2,36 @@
 
 namespace App\Ship\Kernels;
 
-use App\Ship\Middlewares\Http\Authenticate;
-use App\Ship\Middlewares\Http\EncryptCookies;
-use App\Ship\Middlewares\Http\PreventRequestsDuringMaintenance;
-use App\Ship\Middlewares\Http\ProcessETagHeadersMiddleware;
-use App\Ship\Middlewares\Http\ProfilerMiddleware;
-use App\Ship\Middlewares\Http\TrimStrings;
-use App\Ship\Middlewares\Http\TrustProxies;
-use App\Ship\Middlewares\Http\ValidateJsonContent;
-use App\Ship\Middlewares\Http\VerifyCsrfToken;
 use Fruitcake\Cors\HandleCors;
 use Illuminate\Auth\Middleware\Authorize;
-use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
+use App\Ship\Middlewares\Http\TrimStrings;
+use App\Ship\Middlewares\Http\Authenticate;
+use App\Ship\Middlewares\Http\TrustProxies;
+use App\Ship\Middlewares\Http\EncryptCookies;
+use App\Ship\Middlewares\Http\VerifyCsrfToken;
 use Illuminate\Auth\Middleware\RequirePassword;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
-use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
-use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
 use Illuminate\Http\Middleware\SetCacheHeaders;
-use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Session\Middleware\StartSession;
+use App\Ship\Middlewares\Http\ProfilerMiddleware;
+use App\Ship\Middlewares\Http\ValidateJsonContent;
 use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Middleware\ValidateSignature;
-use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
+use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\Foundation\Http\Kernel as LaravelHttpKernel;
+use App\Ship\Middlewares\Http\ProcessETagHeadersMiddleware;
+use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use App\Ship\Middlewares\Http\PreventRequestsDuringMaintenance;
+use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 
+/**
+ * Class HttpKernel
+ *
+ * @package App\Ship\Kernels
+ */
 class HttpKernel extends LaravelHttpKernel
 {
     /**

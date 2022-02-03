@@ -5,6 +5,11 @@ namespace App\Ship\Exceptions;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class AuthenticationException
+ *
+ * @package App\Ship\Exceptions
+ */
 class AuthenticationException extends Exception
 {
     protected $code = RESPONSE::HTTP_UNAUTHORIZED;

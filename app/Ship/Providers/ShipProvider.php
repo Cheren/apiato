@@ -6,6 +6,11 @@ use App\Ship\Parents\Providers\MainProvider;
 use App\Ship\Parents\Providers\RoutesProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
+/**
+ * Class ShipProvider
+ *
+ * @package App\Ship\Providers
+ */
 class ShipProvider extends MainProvider
 {
     /**

@@ -4,6 +4,11 @@ namespace App\Ship\Parents\Repositories;
 
 use Apiato\Core\Abstracts\Repositories\Repository as AbstractRepository;
 
+/**
+ * Class Repository
+ *
+ * @package App\Ship\Parents\Repositories
+ */
 abstract class Repository extends AbstractRepository
 {
     /**

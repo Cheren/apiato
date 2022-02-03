@@ -5,6 +5,11 @@ namespace App\Ship\Kernels;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
+/**
+ * Class ConsoleKernel
+ *
+ * @package App\Ship\Kernels
+ */
 class ConsoleKernel extends LaravelConsoleKernel
 {
     /**
@@ -21,8 +26,11 @@ class ConsoleKernel extends LaravelConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param Schedule $schedule
-     * @return void
+     * @param   Schedule $schedule
+     *
+     * @return  void
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     protected function schedule(Schedule $schedule)
     {
@@ -32,7 +40,7 @@ class ConsoleKernel extends LaravelConsoleKernel
     /**
      * Register the commands for the application.
      *
-     * @return void
+     * @return  void
      */
     protected function commands()
     {
@@ -41,6 +49,7 @@ class ConsoleKernel extends LaravelConsoleKernel
 
         // $this->load(__DIR__.'/Commands');
 
+        /** @noinspection PhpIncludeInspection */
         require app_path('Ship/Commands/Routes.php');
     }
 }

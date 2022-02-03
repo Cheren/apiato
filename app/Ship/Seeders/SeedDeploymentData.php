@@ -4,6 +4,11 @@ namespace App\Ship\Seeders;
 
 use App\Ship\Parents\Seeders\Seeder;
 
+/**
+ * Class SeedDeploymentData
+ *
+ * @package App\Ship\Seeders
+ */
 class SeedDeploymentData extends Seeder
 {
     /**

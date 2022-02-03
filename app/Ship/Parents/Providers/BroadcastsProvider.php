@@ -2,16 +2,15 @@
 
 namespace App\Ship\Parents\Providers;
 
-use Apiato\Core\Abstracts\Providers\BroadcastsProvider as AbstractBroadcastsProvider;
 use Illuminate\Support\Facades\Broadcast;
-use function app_path;
+use Apiato\Core\Abstracts\Providers\BroadcastsProvider as AbstractBroadcastsProvider;
 
 /**
  * Class BroadcastsProvider
  *
  * A.K.A app/Providers/BroadcastServiceProvider.php
  *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ * @package App\Ship\Parents\Providers
  */
 class BroadcastsProvider extends AbstractBroadcastsProvider
 {
@@ -24,6 +23,7 @@ class BroadcastsProvider extends AbstractBroadcastsProvider
     {
         Broadcast::routes();
 
+        /** @noinspection PhpIncludeInspection */
         require app_path('Ship/Broadcasts/Routes.php');
     }
 }

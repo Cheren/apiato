@@ -2,40 +2,53 @@
 
 namespace App\Ship\Criterias;
 
+use Illuminate\Database\Query\Builder;
 use App\Ship\Parents\Criterias\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
-use Illuminate\Database\Query\Builder;
 
 /**
  * Class ThisLikeThatCriteria
  *
- * @author Fabian Widmann <fabian.widmann@gmail.com>
- *
- * Retrieves all entities where $field contains one or more of the given items in $valueString.
+ * @package App\Ship\Criterias
  */
 class ThisLikeThatCriteria extends Criteria
 {
     /**
-     * @var string name of the column
+     * Name of the column.
+     *
+     * @var string
      */
     private $field;
 
     /**
-     * @var string contains values separated by $separator
+     * Contains values separated by $separator.
+     *
+     * @var string
      */
     private $valueString;
 
     /**
-     * @var string separates separate items in the given $values string. Default is csv.
+     * Separates separate items in the given $values string. Default is csv.
+     *
+     * @var string
      */
     private $separator;
 
     /**
-     * @var string this character is replaced with '%'. Default is *.
+     * This character is replaced with '%'. Default is *.
+     *
+     * @var string
      */
     private $wildcard;
 
-
+    /**
+     * ThisLikeThatCriteria constructor.
+     *
+     * @param   $field
+     * @param   $valueString
+     * @param   string $separator
+     * @param   string $wildcard
+     */
     public function __construct($field, $valueString, $separator = ',', $wildcard = '*')
     {
         $this->field = $field;
@@ -45,20 +58,23 @@ class ThisLikeThatCriteria extends Criteria
     }
 
     /**
-     * Applies the criteria - if more than one value is separated by the configured separator we will "OR" all the params.
+     * Apply criteria in query repository.
      *
-     * @param  Builder $model
-     * @param PrettusRepositoryInterface $repository
+     * @param   $model
+     * @param   PrettusRepositoryInterface $repository
      *
-     * @return  mixed
+     * @return  Builder
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
         return $model->where(function ($query) {
             $values = explode($this->separator, $this->valueString);
             $query->where($this->field, 'LIKE', str_replace($this->wildcard, '%', array_shift($values)));
-            foreach ($values as $value)
+            foreach ($values as $value) {
                 $query->orWhere($this->field, 'LIKE', str_replace($this->wildcard, '%', $value));
+            }
         });
     }
 }

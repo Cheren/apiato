@@ -2,14 +2,27 @@
 
 namespace App\Ship\Middlewares\Http;
 
-use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Config;
+use App\Ship\Parents\Middlewares\Middleware;
 
+/**
+ * Class ProfilerMiddleware
+ *
+ * @package App\Ship\Middlewares\Http
+ */
 class ProfilerMiddleware extends Middleware
 {
+    /**
+     * Handle.
+     *
+     * @param   Request $request
+     * @param   Closure $next
+     *
+     * @return  mixed
+     */
     public function handle(Request $request, Closure $next)
     {
         $response = $next($request);

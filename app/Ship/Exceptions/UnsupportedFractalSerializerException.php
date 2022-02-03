@@ -5,6 +5,11 @@ namespace App\Ship\Exceptions;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
+/**
+ * Class UnsupportedFractalSerializerException
+ *
+ * @package App\Ship\Exceptions
+ */
 class UnsupportedFractalSerializerException extends Exception
 {
     protected $code = SymfonyResponse::HTTP_INTERNAL_SERVER_ERROR;

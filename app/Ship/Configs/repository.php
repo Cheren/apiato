@@ -1,11 +1,5 @@
 <?php
-/*
-|--------------------------------------------------------------------------
-| Prettus Repository Config
-|--------------------------------------------------------------------------
-|
-|
-*/
+
 return [
 
     /*
@@ -233,7 +227,7 @@ return [
     */
     'generator'  => [
         'basePath'      => env('SRC_PATH', app()->path()),
-        'rootNamespace' => env('ROOT_NAMESPACE', 'App').'\\',
+        'rootNamespace' => env('ROOT_NAMESPACE', 'App') . '\\',
         'stubsOverridePath' => app()->path(),
         'paths'         => [
             'models'       => 'Entities',

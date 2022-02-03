@@ -2,15 +2,13 @@
 
 namespace App\Ship\Parents\Jobs;
 
-use Apiato\Core\Abstracts\Jobs\Job as AbstractJob;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Apiato\Core\Abstracts\Jobs\Job as AbstractJob;
 
 /**
  * Class Job
  *
- * A.K.A (app/Jobs/Job.php)
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ * @package App\Ship\Parents\Jobs
  */
 abstract class Job extends AbstractJob implements ShouldQueue
 {
@@ -24,5 +22,4 @@ abstract class Job extends AbstractJob implements ShouldQueue
     | provides access to the "onQueue" and "delay" queue helper methods.
     |
     */
-
 }

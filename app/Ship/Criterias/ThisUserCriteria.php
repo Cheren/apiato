@@ -2,18 +2,21 @@
 
 namespace App\Ship\Criterias;
 
-use App\Ship\Parents\Criterias\Criteria;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Auth;
+use App\Ship\Parents\Criterias\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
 /**
- * Class ThisUserCriteria.
+ * Class ThisUserCriteria
  *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+ * @package App\Ship\Criterias
  */
 class ThisUserCriteria extends Criteria
 {
     /**
+     * Hold user id.
+     *
      * @var int
      */
     private $userId;
@@ -29,14 +32,18 @@ class ThisUserCriteria extends Criteria
     }
 
     /**
-     * @param                                                   $model
-     * @param PrettusRepositoryInterface $repository
+     * Apply criteria in query repository.
      *
-     * @return mixed
+     * @param   $model
+     * @param   PrettusRepositoryInterface $repository
+     *
+     * @return  Builder
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
-        if(!$this->userId){
+        if (!$this->userId) {
             $this->userId = Auth::user()->id;
         }
 

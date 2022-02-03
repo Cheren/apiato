@@ -2,21 +2,36 @@
 
 namespace App\Ship\Middlewares\Http;
 
-use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Illuminate\Http\Request;
+use App\Ship\Parents\Middlewares\Middleware;
 use Symfony\Component\HttpKernel\Exception\PreconditionFailedHttpException;
 
+/**
+ * Class ProcessETagHeadersMiddleware
+ *
+ * @package App\Ship\Middlewares\Http
+ */
 class ProcessETagHeadersMiddleware extends Middleware
 {
+    /**
+     * Handle.
+     *
+     * @param   Request $request
+     * @param   Closure $next
+     *
+     * @return  mixed
+     */
     public function handle(Request $request, Closure $next)
     {
         /*
          * This middleware will add the "ETag" HTTP Header to a Response. The ETag, in turn, is a
          * hash of the content that will be returned. The client may request an endpoint and provide an ETag in the
-         * "If-None-Match" HTTP Header. If the calculated ETag and submitted ETag matches, the response is manipulated accordingly:
+         * "If-None-Match" HTTP Header. If the calculated ETag and submitted ETag matches,
+         * the response is manipulated accordingly:
          * - the HTTP Status Code is set to 304 (not modified)
-         * - the body content (i.e., the content that was supposed to be delivered) is removed --> the client receives an empty body
+         * - the body content (i.e., the content that was supposed to be delivered) is removed -->
+         * the client receives an empty body
          */
 
         // the feature is disabled - so skip everything
@@ -28,7 +43,9 @@ class ProcessETagHeadersMiddleware extends Middleware
         if ($request->hasHeader('if-none-match')) {
             // check, if the request method is GET or HEAD
             if (!($request->method() === 'GET' || $request->method() === 'HEAD')) {
-                throw new PreconditionFailedHttpException('HTTP Header IF-None-Match is only allowed for GET and HEAD Requests.');
+                throw new PreconditionFailedHttpException(
+                    'HTTP Header IF-None-Match is only allowed for GET and HEAD Requests.'
+                );
             }
         }
 

@@ -2,13 +2,25 @@
 
 namespace App\Ship\Parents\Tests\PhpUnit;
 
-use Apiato\Core\Abstracts\Tests\PhpUnit\TestCase as AbstractTestCase;
 use Faker\Generator;
-use Illuminate\Contracts\Console\Kernel as ApiatoConsoleKernel;
 use Illuminate\Foundation\Application;
+use Illuminate\Contracts\Console\Kernel as ApiatoConsoleKernel;
+use Apiato\Core\Abstracts\Tests\PhpUnit\TestCase as AbstractTestCase;
 
+/***
+ * Class TestCase
+ *
+ * @package App\Ship\Parents\Tests\PhpUnit
+ */
 abstract class TestCase extends AbstractTestCase
 {
+    /**
+     * Default data.
+     *
+     * @var array
+     */
+    private array $data = [];
+
     /**
      * Setup the test environment, before each test.
      *
@@ -47,5 +59,17 @@ abstract class TestCase extends AbstractTestCase
         $this->faker = $app->make(Generator::class);
 
         return $app;
+    }
+
+    /**
+     * With data.
+     *
+     * @param array $data
+     *
+     * @return array
+     */
+    public function withData(array $data): array
+    {
+        return array_replace_recursive($this->data, $data);
     }
 }

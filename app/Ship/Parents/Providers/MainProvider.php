@@ -4,6 +4,11 @@ namespace App\Ship\Parents\Providers;
 
 use Apiato\Core\Abstracts\Providers\MainProvider as AbstractMainProvider;
 
+/**
+ * Class MainProvider
+ *
+ * @package App\Ship\Parents\Providers
+ */
 abstract class MainProvider extends AbstractMainProvider
 {
     /**

@@ -2,16 +2,14 @@
 
 namespace App\Ship\Exceptions\Handlers;
 
-use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
-use App\Ship\Parents\Exceptions\Exception as ParentException;
 use Throwable;
+use App\Ship\Parents\Exceptions\Exception as ParentException;
+use Apiato\Core\Exceptions\Handlers\ExceptionsHandler as CoreExceptionsHandler;
 
 /**
  * Class ExceptionsHandler
  *
- * A.K.A (app/Exceptions/Handler.php)
- *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ * @package App\Ship\Exceptions\Handlers
  */
 class ExceptionsHandler extends CoreExceptionsHandler
 {

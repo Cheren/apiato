@@ -1,9 +1,14 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
+// @codingStandardsIgnoreStart
+
+/**
+ * Class CreateJobsTable
+ */
 class CreateJobsTable extends Migration
 {
     /**
@@ -24,7 +29,6 @@ class CreateJobsTable extends Migration
                 $table->unsignedInteger('created_at');
 
                 $table->index(['queue', 'reserved_at']);
-
             });
         }
     }

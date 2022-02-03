@@ -9,7 +9,7 @@ use Apiato\Core\Abstracts\Providers\EventsProvider as AbstractEventsProvider;
  *
  * A.K.A app/Providers/EventsServiceProvider.php
  *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ * @package App\Ship\Parents\Providers
  */
 class EventsProvider extends AbstractEventsProvider
 {
@@ -21,7 +21,6 @@ class EventsProvider extends AbstractEventsProvider
     protected $listen = [
 
     ];
-
 
     /**
      * Register any other events for your application.

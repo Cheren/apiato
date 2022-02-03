@@ -4,6 +4,11 @@ namespace App\Ship\Middlewares\Http;
 
 use Illuminate\Foundation\Http\Middleware\TrimStrings as Middleware;
 
+/**
+ * Class TrimStrings
+ *
+ * @package App\Ship\Middlewares\Http
+ */
 class TrimStrings extends Middleware
 {
     /**

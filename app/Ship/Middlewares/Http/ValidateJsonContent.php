@@ -2,14 +2,29 @@
 
 namespace App\Ship\Middlewares\Http;
 
-use App\Ship\Exceptions\MissingJSONHeaderException;
-use App\Ship\Parents\Middlewares\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use App\Ship\Parents\Middlewares\Middleware;
+use App\Ship\Exceptions\MissingJSONHeaderException;
 
+/**
+ * Class ValidateJsonContent
+ *
+ * @package App\Ship\Middlewares\Http
+ */
 class ValidateJsonContent extends Middleware
 {
+    /**
+     * Handle.
+     *
+     * @param   Request $request
+     * @param   Closure $next
+     *
+     * @return  mixed
+     *
+     * @throws  MissingJSONHeaderException
+     */
     public function handle(Request $request, Closure $next)
     {
         $acceptHeader = $request->header('accept');
@@ -34,7 +49,6 @@ class ValidateJsonContent extends Middleware
             $warnCode = '199'; // https://www.iana.org/assignments/http-warn-codes/http-warn-codes.xhtml
             $warnMessage = 'Missing request header [ accept = ' . $contentType . ' ] when calling a JSON API.';
             $response->headers->set('Warning', $warnCode . ' ' . $warnMessage);
-
         }
 
         // return the response
