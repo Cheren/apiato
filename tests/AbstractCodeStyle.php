@@ -96,9 +96,12 @@ class AbstractCodeStyle extends TestCase
         'bower_components',
         'build',
         'fonts',
+        'cache',
         'fixtures',
         'logs',
+        'storage',
         'node_modules',
+        'Containers/Vendor',
         'resources',
         'vendor',
         'temp',
@@ -152,6 +155,10 @@ class AbstractCodeStyle extends TestCase
             ->files()
             ->in($this->getProjectRoot())
             ->exclude($this->excludePaths)
+            ->notName('/\.blade\.php/')
+            ->notName('/artisan\.php/')
+            ->notName('/_ide_helper\.php/')
+            ->notName('/phpstorm\.meta\.php/')
             ->name('*.php');
 
         foreach ($finder as $file) {
