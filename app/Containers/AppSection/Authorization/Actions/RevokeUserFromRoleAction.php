@@ -2,15 +2,29 @@
 
 namespace App\Containers\AppSection\Authorization\Actions;
 
-use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
-use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeUserFromRoleRequest;
+use App\Ship\Parents\Actions\Action;
+use App\Ship\Exceptions\NotFoundException;
+use Illuminate\Database\Eloquent\Collection;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tasks\FindUserByIdTask;
-use App\Ship\Parents\Actions\Action;
-use Illuminate\Database\Eloquent\Collection;
+use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
+use App\Containers\AppSection\Authorization\UI\API\Requests\RevokeUserFromRoleRequest;
 
+/**
+ * Class RevokeUserFromRoleAction
+ *
+ * @package App\Containers\AppSection\Authorization\Actions
+ */
 class RevokeUserFromRoleAction extends Action
 {
+    /**
+     * Run action.
+     *
+     * @param   RevokeUserFromRoleRequest $request
+     * @return  User
+     *
+     * @throws  NotFoundException
+     */
     public function run(RevokeUserFromRoleRequest $request): User
     {
         $user = null;

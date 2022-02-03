@@ -2,18 +2,15 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
+use Illuminate\Support\Arr;
+use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\ApiTestCase;
-use App\Containers\AppSection\User\Models\User;
-use Illuminate\Support\Arr;
 
 /**
- * Class AssignUserToRoleTest.
+ * Class AssignUserToRoleTest
  *
- * @group authorization
- * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+ * @package App\Containers\AppSection\Authorization\UI\API\Tests\Functional
  */
 class AssignUserToRoleTest extends ApiTestCase
 {

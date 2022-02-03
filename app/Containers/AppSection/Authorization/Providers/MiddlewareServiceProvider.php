@@ -2,15 +2,21 @@
 
 namespace App\Containers\AppSection\Authorization\Providers;
 
-use App\Ship\Parents\Providers\MiddlewareProvider;
 use Illuminate\Auth\Middleware\Authorize;
+use App\Ship\Parents\Providers\MiddlewareProvider;
 
+/**
+ * Class MiddlewareServiceProvider
+ *
+ * @package App\Containers\AppSection\Authorization\Providers
+ */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
-    protected array $middlewares = [
-        // ..
-    ];
-
+    /**
+     * Middleware group map.
+     *
+     * @var array
+     */
     protected array $middlewareGroups = [
         'web' => [
 
@@ -20,6 +26,20 @@ class MiddlewareServiceProvider extends MiddlewareProvider
         ],
     ];
 
+    /**
+     * Middleware map.
+     *
+     * @var array
+     */
+    protected array $middlewares = [
+        // ..
+    ];
+
+    /**
+     * Middleware route map.
+     *
+     * @var array
+     */
     protected array $routeMiddleware = [
         // Laravel default route middleware's:
         'can' => Authorize::class,

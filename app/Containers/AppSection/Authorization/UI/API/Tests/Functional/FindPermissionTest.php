@@ -6,12 +6,9 @@ use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\ApiTestCase;
 
 /**
- * Class FindPermissionTest.
+ * Class FindPermissionTest
  *
- * @group authorization
- * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+ * @package App\Containers\AppSection\Authorization\UI\API\Tests\Functional
  */
 class FindPermissionTest extends ApiTestCase
 {

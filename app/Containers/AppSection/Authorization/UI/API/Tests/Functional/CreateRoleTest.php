@@ -5,12 +5,9 @@ namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 use App\Containers\AppSection\Authorization\Tests\ApiTestCase;
 
 /**
- * Class CreateRoleTest.
+ * Class CreateRoleTest
  *
- * @group authorization
- * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+ * @package App\Containers\AppSection\Authorization\UI\API\Tests\Functional
  */
 class CreateRoleTest extends ApiTestCase
 {

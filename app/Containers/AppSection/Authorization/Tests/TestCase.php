@@ -9,7 +9,7 @@ use App\Ship\Parents\Tests\PhpUnit\TestCase as ShipTestCase;
  *
  * Container TestCase class. Use this class to put your container specific tests helper functions.
  *
- * @author  Mahmoud Zalt  <mahmoud@zalt.me>
+ * @package App\Containers\AppSection\Authorization\Tests
  */
 class TestCase extends ShipTestCase
 {

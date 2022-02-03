@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class FindRoleRequest
+ *
+ * @package App\Containers\AppSection\Authorization\UI\API\Requests
+ */
 class FindRoleRequest extends Request
 {
     /**
@@ -29,17 +34,27 @@ class FindRoleRequest extends Request
         'id',
     ];
 
-    public function rules(): array
-    {
-        return [
-            'id' => 'required|exists:' . config('permission.table_names.roles') . ',id'
-        ];
-    }
-
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return $this->check([
             'hasAccess',
         ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'id' => 'required|exists:' . config('permission.table_names.roles') . ',id'
+        ];
     }
 }

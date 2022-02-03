@@ -6,12 +6,9 @@ use App\Containers\AppSection\Authorization\Models\Role;
 use App\Containers\AppSection\Authorization\Tests\ApiTestCase;
 
 /**
- * Class FindRoleTest.
+ * Class FindRoleTest
  *
- * @group authorization
- * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+ * @package App\Containers\AppSection\Authorization\UI\API\Tests\Functional
  */
 class FindRoleTest extends ApiTestCase
 {

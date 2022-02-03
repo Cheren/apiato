@@ -11,8 +11,8 @@
  * @apiUse             GeneralSuccessMultipleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
 
 Route::get('roles', [Controller::class, 'getAllRoles'])
     ->name('api_authorization_get_all_roles')

@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class FindPermissionRequest
+ *
+ * @package App\Containers\AppSection\Authorization\UI\API\Requests
+ */
 class FindPermissionRequest extends Request
 {
     /**
@@ -29,17 +34,27 @@ class FindPermissionRequest extends Request
         'id',
     ];
 
-    public function rules(): array
-    {
-        return [
-            'id' => 'required|exists:' . config('permission.table_names.permissions') . ',id'
-        ];
-    }
-
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return $this->check([
             'hasAccess',
         ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'id' => 'required|exists:' . config('permission.table_names.permissions') . ',id'
+        ];
     }
 }

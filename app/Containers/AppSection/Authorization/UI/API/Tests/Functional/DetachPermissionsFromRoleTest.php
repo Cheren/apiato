@@ -2,17 +2,14 @@
 
 namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Models\Permission;
 use App\Containers\AppSection\Authorization\Tests\ApiTestCase;
 
 /**
- * Class DetachPermissionsFromRoleTest.
+ * Class DetachPermissionsFromRoleTest
  *
- * @group authorization
- * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+ * @package App\Containers\AppSection\Authorization\UI\API\Tests\Functional
  */
 class DetachPermissionsFromRoleTest extends ApiTestCase
 {

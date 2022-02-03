@@ -1,8 +1,13 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
+// @codingStandardsIgnoreStart
+
+/**
+ * Class AddLevelColumnToRolesTable
+ */
 class AddLevelColumnToRolesTable extends Migration
 {
     /**
@@ -12,7 +17,6 @@ class AddLevelColumnToRolesTable extends Migration
     {
         Schema::table(config('permission.table_names.roles'), function (Blueprint $table) {
             $table->unsignedInteger('level')->default(0);
-
         });
     }
 
@@ -23,7 +27,6 @@ class AddLevelColumnToRolesTable extends Migration
     {
         Schema::table(config('permission.table_names.roles'), function (Blueprint $table) {
             $table->dropColumn('level');
-
         });
     }
 }

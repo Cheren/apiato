@@ -2,11 +2,24 @@
 
 namespace App\Containers\AppSection\Authorization\Tasks;
 
-use App\Containers\AppSection\Authorization\Models\Role;
 use App\Ship\Parents\Tasks\Task;
+use App\Containers\AppSection\Authorization\Models\Role;
 
+/**
+ * Class DetachPermissionsFromRoleTask
+ *
+ * @package App\Containers\AppSection\Authorization\Tasks
+ */
 class DetachPermissionsFromRoleTask extends Task
 {
+    /**
+     * Run action.
+     *
+     * @param   Role $role
+     * @param   $singleOrMultiplePermissionIds
+     *
+     * @return  Role
+     */
     public function run(Role $role, $singleOrMultiplePermissionIds): Role
     {
         if (!is_array($singleOrMultiplePermissionIds)) {

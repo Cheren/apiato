@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class SyncPermissionsOnRoleRequest
+ *
+ * @package App\Containers\AppSection\Authorization\UI\API\Requests
+ */
 class SyncPermissionsOnRoleRequest extends Request
 {
     /**
@@ -30,6 +35,23 @@ class SyncPermissionsOnRoleRequest extends Request
 
     ];
 
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -37,12 +59,5 @@ class SyncPermissionsOnRoleRequest extends Request
             'permissions_ids.*' => 'exists:' . config('permission.table_names.permissions') . ',id',
             'role_id' => 'required|exists:' . config('permission.table_names.roles') . ',id',
         ];
-    }
-
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess',
-        ]);
     }
 }

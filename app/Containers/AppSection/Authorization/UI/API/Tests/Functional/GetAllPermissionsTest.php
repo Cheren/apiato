@@ -5,12 +5,9 @@ namespace App\Containers\AppSection\Authorization\UI\API\Tests\Functional;
 use App\Containers\AppSection\Authorization\Tests\ApiTestCase;
 
 /**
- * Class GetAllPermissionsTest.
+ * Class GetAllPermissionsTest
  *
- * @group authorization
- * @group api
- *
- * @author  Mahmoud Zalt <mahmoud@zalt.me>
+ * @package App\Containers\AppSection\Authorization\UI\API\Tests\Functional
  */
 class GetAllPermissionsTest extends ApiTestCase
 {

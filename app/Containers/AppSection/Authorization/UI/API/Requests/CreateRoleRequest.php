@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class CreateRoleRequest
+ *
+ * @package App\Containers\AppSection\Authorization\UI\API\Requests
+ */
 class CreateRoleRequest extends Request
 {
     /**
@@ -29,6 +34,11 @@ class CreateRoleRequest extends Request
 
     ];
 
+    /**
+     * Rules.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -38,6 +48,11 @@ class CreateRoleRequest extends Request
         ];
     }
 
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return $this->check([

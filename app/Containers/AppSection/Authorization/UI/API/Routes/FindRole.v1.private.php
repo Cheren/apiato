@@ -11,8 +11,8 @@
  * @apiUse             RoleSuccessSingleResponse
  */
 
-use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Containers\AppSection\Authorization\UI\API\Controllers\Controller;
 
 Route::get('roles/{id}', [Controller::class, 'findRole'])
     ->name('api_authorization_get_role')

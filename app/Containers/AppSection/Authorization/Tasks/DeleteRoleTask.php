@@ -2,26 +2,44 @@
 
 namespace App\Containers\AppSection\Authorization\Tasks;
 
-use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
-use App\Containers\AppSection\Authorization\Models\Role;
-use App\Ship\Exceptions\DeleteResourceFailedException;
-use App\Ship\Parents\Tasks\Task;
 use Exception;
+use App\Ship\Parents\Tasks\Task;
+use App\Ship\Exceptions\DeleteResourceFailedException;
+use App\Containers\AppSection\Authorization\Models\Role;
+use App\Containers\AppSection\Authorization\Data\Repositories\RoleRepository;
 
+/**
+ * Class DeleteRoleTask
+ *
+ * @package App\Containers\AppSection\Authorization\Tasks
+ */
 class DeleteRoleTask extends Task
 {
+    /**
+     * Hold repository.
+     *
+     * @var RoleRepository
+     */
     protected RoleRepository $repository;
 
+    /**
+     * DeleteRoleTask constructor.
+     *
+     * @param RoleRepository $repository
+     */
     public function __construct(RoleRepository $repository)
     {
         $this->repository = $repository;
     }
 
     /**
-     * @param Integer|Role $role
+     * Run action.
      *
-     * @return bool
-     * @throws DeleteResourceFailedException
+     * @param   Integer|Role $role
+     *
+     * @return  bool
+     *
+     * @throws  DeleteResourceFailedException
      */
     public function run($role): bool
     {

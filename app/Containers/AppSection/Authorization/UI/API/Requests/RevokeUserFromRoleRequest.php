@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class RevokeUserFromRoleRequest
+ *
+ * @package App\Containers\AppSection\Authorization\UI\API\Requests
+ */
 class RevokeUserFromRoleRequest extends Request
 {
     /**
@@ -30,6 +35,23 @@ class RevokeUserFromRoleRequest extends Request
 
     ];
 
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -37,12 +59,5 @@ class RevokeUserFromRoleRequest extends Request
             'roles_ids.*' => 'exists:' . config('permission.table_names.roles') . ',id',
             'user_id' => 'required|exists:users,id',
         ];
-    }
-
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess',
-        ]);
     }
 }

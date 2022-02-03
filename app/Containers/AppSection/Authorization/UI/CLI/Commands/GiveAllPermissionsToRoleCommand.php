@@ -2,18 +2,35 @@
 
 namespace App\Containers\AppSection\Authorization\UI\CLI\Commands;
 
-use App\Containers\AppSection\Authorization\Exceptions\RoleNotFoundException;
+use App\Ship\Parents\Commands\ConsoleCommand;
 use App\Containers\AppSection\Authorization\Tasks\FindRoleTask;
 use App\Containers\AppSection\Authorization\Tasks\GetAllPermissionsTask;
-use App\Ship\Parents\Commands\ConsoleCommand;
+use App\Containers\AppSection\Authorization\Exceptions\RoleNotFoundException;
 
+/**
+ * Class GiveAllPermissionsToRoleCommand
+ *
+ * @package App\Containers\AppSection\Authorization\UI\CLI\Commands
+ */
 class GiveAllPermissionsToRoleCommand extends ConsoleCommand
 {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
     protected $signature = 'apiato:permissions:toRole {role}';
 
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
     protected $description = 'Give all system Permissions to a specific Role.';
 
     /**
+     * Action handle.
+     *
      * @throws RoleNotFoundException
      */
     public function handle(): void
@@ -30,7 +47,7 @@ class GiveAllPermissionsToRoleCommand extends ConsoleCommand
 
         $role->syncPermissions($allPermissionsNames = $allPermissions->pluck('name')->toArray());
 
-        $this->info('Gave the Role (' . $roleName . ') the following Permissions: ' . implode(' - ',
-                $allPermissionsNames) . '.');
+        $allPermissionsInfo = implode(' - ', $allPermissionsNames);
+        $this->info('Gave the Role (' . $roleName . ') the following Permissions: ' . $allPermissionsInfo . '.');
     }
 }

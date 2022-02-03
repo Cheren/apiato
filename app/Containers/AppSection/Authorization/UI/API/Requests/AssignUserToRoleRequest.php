@@ -4,11 +4,16 @@ namespace App\Containers\AppSection\Authorization\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class AssignUserToRoleRequest
+ *
+ * @package App\Containers\AppSection\Authorization\UI\API\Requests
+ */
 class AssignUserToRoleRequest extends Request
 {
-    /*
-    * Define which Roles and/or Permissions has access to this request.
-    */
+    /**
+     * Define which Roles and/or Permissions has access to this request.
+     */
     protected array $access = [
         'roles' => '',
         'permissions' => 'manage-admins-access',
@@ -30,6 +35,23 @@ class AssignUserToRoleRequest extends Request
 
     ];
 
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -37,12 +59,5 @@ class AssignUserToRoleRequest extends Request
             'roles_ids.*' => 'exists:' . config('permission.table_names.roles') . ',id',
             'user_id' => 'required|exists:users,id',
         ];
-    }
-
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess',
-        ]);
     }
 }
