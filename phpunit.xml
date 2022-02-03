@@ -4,7 +4,7 @@
          backupStaticAttributes="false" bootstrap="vendor/autoload.php" colors="true" convertErrorsToExceptions="true"
          convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false"
          stopOnFailure="false">
-    <coverage includeUncoveredFiles="true" processUncoveredFiles="false">
+    <coverage includeUncoveredFiles="true" processUncoveredFiles="false" cacheDirectory="./build/phpunit/cache">
         <include>
             <directory suffix=".php">./app</directory>
         </include>
@@ -13,14 +13,20 @@
             <directory suffix=".php">./app/Containers/*/UI/*/Routes</directory>
             <directory suffix=".php">./app/Containers/*/Data/Factories</directory>
         </exclude>
+        <report>
+            <text outputFile="php://stdout"/>
+            <html outputDirectory="build/coverage"/>
+        </report>
     </coverage>
     <testsuites>
         <testsuite name="Containers Tests">
             <directory suffix="Test.php">./app/Containers</directory>
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
     <php>
         <env name="API_FULL_URL" value="http://api.apiato.test"/>
+        <env name="PATH_SRC" value="app"/>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
