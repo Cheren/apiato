@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * Beauty application system
+ *
+ * This file is part of the Beauty application system package.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @license    Proprietary
+ * @copyright  Copyright (C) kalistratov.ru, All rights reserved.
+ * @link       https://kalistratov.ru
+ */
+
 namespace Apiato\Test;
 
 use PHPUnit\Framework\TestCase;
@@ -17,28 +29,28 @@ class AbstractCodeStyle extends TestCase
      *
      * @var string
      */
-    protected string $packageName = 'ERP system';
+    protected string $packageName = 'Beauty application system';
 
     /**
      * Hold package license.
      *
      * @var string
      */
-    protected string $packageLicense = 'MIT';
+    protected string $packageLicense = 'Proprietary';
 
     /**
      * Hold package copyright.
      *
      * @var string
      */
-    protected string $packageCopyright = 'Copyright (C) zemlechist.ru, All rights reserved.';
+    protected string $packageCopyright = 'Copyright (C) kalistratov.ru, All rights reserved.';
 
     /**
      * Hold package link.
      *
      * @var string
      */
-    protected string $packageLink = 'https://zemlechist.ru';
+    protected string $packageLink = 'https://kalistratov.ru';
 
     /**
      * Hold package author.
@@ -52,10 +64,10 @@ class AbstractCodeStyle extends TestCase
      *
      * @var array
      */
-    protected array $packageDesc      = [
-        'This file is part of the ERM system package.',
+    protected array $packageDesc = [
+        'This file is part of the Beauty application system package.',
         'For the full copyright and license information, please view the LICENSE',
-        'file that was distributed with this source code. Привет',
+        'file that was distributed with this source code.',
     ];
 
     /**
@@ -100,6 +112,7 @@ class AbstractCodeStyle extends TestCase
      */
     protected array $validHeaderPHP = [
         '<?php',
+        '',
         '/**',
         ' * _PACKAGE_',
         ' *',
@@ -110,6 +123,9 @@ class AbstractCodeStyle extends TestCase
         ' * @link       _LINK_',
     ];
 
+    /**
+     * This method is called before each test.
+     */
     public function setUp(): void
     {
         parent::setUp();
@@ -151,7 +167,7 @@ class AbstractCodeStyle extends TestCase
      */
     public function testCyrillic(): void
     {
-        $finder = new Finder();
+       /* $finder = new Finder();
 
         $finder
             ->files()
@@ -168,7 +184,7 @@ class AbstractCodeStyle extends TestCase
             } else {
                 $this->assertTrue(true);
             }
-        }
+        }*/
 
         $this->assertTrue(true);
     }

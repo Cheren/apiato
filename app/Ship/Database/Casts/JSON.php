@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * Beauty application system
+ *
+ * This file is part of the Beauty application system package.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @license    Proprietary
+ * @copyright  Copyright (C) kalistratov.ru, All rights reserved.
+ * @link       https://kalistratov.ru
+ */
+
 namespace App\Ship\Database\Casts;
 
 use JBZoo\Data\JSON as JsonData;
@@ -13,7 +25,6 @@ use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
  */
 class JSON implements CastsAttributes
 {
-
     /**
      * Transform the attribute from the underlying model values.
      *
