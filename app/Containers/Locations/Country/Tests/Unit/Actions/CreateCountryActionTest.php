@@ -63,7 +63,7 @@ class CreateCountryActionTest extends TestCase
 
     private function getRequest(array $data = []): CreateCountryActionRequestTest
     {
-        return new CreateCountryActionRequestTest($this->getData($data));
+        return new CreateCountryActionRequestTest($this->withData($data));
     }
 }
 
