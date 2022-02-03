@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\Authentication\UI\WEB\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class LoginRequest
+ *
+ * @package App\Containers\AppSection\Authentication\UI\WEB\Requests
+ */
 class LoginRequest extends Request
 {
     /**
@@ -30,6 +35,16 @@ class LoginRequest extends Request
     ];
 
     /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      */
     public function rules(): array
@@ -41,15 +56,5 @@ class LoginRequest extends Request
         $rules = loginAttributeValidationRulesMerger($rules);
 
         return $rules;
-    }
-
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess',
-        ]);
     }
 }

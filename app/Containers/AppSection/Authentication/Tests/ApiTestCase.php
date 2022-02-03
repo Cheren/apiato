@@ -2,14 +2,16 @@
 
 namespace App\Containers\AppSection\Authentication\Tests;
 
-use App\Containers\AppSection\Authentication\Tests\TestCase as BaseTestCase;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
+use App\Containers\AppSection\Authentication\Tests\TestCase as BaseTestCase;
 
 /**
- * Class ApiTestCase.
+ * Class ApiTestCase
  *
  * This is the container API TestCase class. Use this class to add your container specific API related helper functions.
+ *
+ * @package App\Containers\AppSection\Authentication\Tests
  */
 class ApiTestCase extends BaseTestCase
 {

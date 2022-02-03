@@ -2,17 +2,18 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
-use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
-use App\Containers\AppSection\Authentication\Tests\TestCase;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
+use App\Containers\AppSection\Authentication\Tests\TestCase;
+use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
 
 /**
- * Class ExtractLoginCustomAttributeTest.
+ * Class ExtractLoginCustomAttributeTest
  *
  * @group authentication
  * @group unit
  *
+ * @package App\Containers\AppSection\Authentication\Tests\Unit
  */
 class ExtractLoginCustomAttributeTest extends TestCase
 {

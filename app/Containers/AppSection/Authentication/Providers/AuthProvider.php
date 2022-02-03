@@ -2,18 +2,22 @@
 
 namespace App\Containers\AppSection\Authentication\Providers;
 
-use Apiato\Core\Loaders\RoutesLoaderTrait;
-use App\Ship\Parents\Providers\AuthProvider as ParentAuthProvider;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Passport;
 use Laravel\Passport\RouteRegistrar;
+use Illuminate\Support\Facades\Route;
+use Apiato\Core\Loaders\RoutesLoaderTrait;
+use App\Ship\Parents\Providers\AuthProvider as ParentAuthProvider;
 
 /**
+ * Class AuthProvider
+ *
  * This class is provided by Laravel as default provider,
  * to register authorization policies.
  *
  * A.K.A App\Providers\AuthServiceProvider.php
+ *
+ * @package App\Containers\AppSection\Authentication\Providers
  */
 class AuthProvider extends ParentAuthProvider
 {
@@ -45,6 +49,9 @@ class AuthProvider extends ParentAuthProvider
         $this->registerPassportWebRoutes();
     }
 
+    /**
+     * Register passport.
+     */
     private function registerPassport(): void
     {
         if (config('apiato.api.enabled-implicit-grant')) {
@@ -56,6 +63,9 @@ class AuthProvider extends ParentAuthProvider
         Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('apiato.api.refresh-expires-in')));
     }
 
+    /**
+     * Register passport api routes.
+     */
     private function registerPassportApiRoutes(): void
     {
         $prefix = config('apiato.api.prefix');
@@ -73,6 +83,9 @@ class AuthProvider extends ParentAuthProvider
         }
     }
 
+    /**
+     * Register passport web routes.
+     */
     private function registerPassportWebRoutes(): void
     {
         if (!$this->app->routesAreCached()) {

@@ -5,6 +5,11 @@ namespace App\Containers\AppSection\Authentication\Exceptions;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class RefreshTokenMissedException
+ *
+ * @package App\Containers\AppSection\Authentication\Exceptions
+ */
 class RefreshTokenMissedException extends Exception
 {
     protected $code = Response::HTTP_BAD_REQUEST;

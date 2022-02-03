@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class ProxyRefreshRequest
+ *
+ * @package App\Containers\AppSection\Authentication\UI\API\Requests
+ */
 class ProxyRefreshRequest extends Request
 {
     /**
@@ -30,16 +35,6 @@ class ProxyRefreshRequest extends Request
     ];
 
     /**
-     * Get the validation rules that apply to the request.
-     */
-    public function rules(): array
-    {
-        return [
-
-        ];
-    }
-
-    /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
@@ -47,5 +42,15 @@ class ProxyRefreshRequest extends Request
         return $this->check([
             'hasAccess',
         ]);
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     */
+    public function rules(): array
+    {
+        return [
+
+        ];
     }
 }

@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\Authentication\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class ProxyLoginPasswordGrantRequest
+ *
+ * @package App\Containers\AppSection\Authentication\UI\API\Requests
+ */
 class ProxyLoginPasswordGrantRequest extends Request
 {
     /**
@@ -30,6 +35,16 @@ class ProxyLoginPasswordGrantRequest extends Request
     ];
 
     /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      */
     public function rules(): array
@@ -41,15 +56,5 @@ class ProxyLoginPasswordGrantRequest extends Request
         $rules = loginAttributeValidationRulesMerger($rules);
 
         return $rules;
-    }
-
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess',
-        ]);
     }
 }

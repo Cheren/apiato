@@ -6,9 +6,11 @@ use App\Ship\Parents\Providers\MainProvider;
 use Laravel\Passport\PassportServiceProvider;
 
 /**
- * Class MainServiceProvider.
+ * Class MainServiceProvider
  *
  * The Main Service Provider of this container, it will be automatically registered in the framework.
+ *
+ * @package App\Containers\AppSection\Authentication\Providers
  *
  * @author  Mahmoud Zalt <mahmoud@zalt.me>
  */

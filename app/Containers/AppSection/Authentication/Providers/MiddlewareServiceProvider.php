@@ -5,12 +5,18 @@ namespace App\Containers\AppSection\Authentication\Providers;
 use App\Ship\Middlewares\Http\RedirectIfAuthenticated;
 use App\Ship\Parents\Providers\MiddlewareProvider;
 
+/**
+ * Class MiddlewareServiceProvider
+ *
+ * @package App\Containers\AppSection\Authentication\Providers
+ */
 class MiddlewareServiceProvider extends MiddlewareProvider
 {
-    protected array $middlewares = [
-        // ..
-    ];
-
+    /**
+     * Middleware group map.
+     *
+     * @var array
+     */
     protected array $middlewareGroups = [
         'web' => [
             // ..
@@ -20,6 +26,20 @@ class MiddlewareServiceProvider extends MiddlewareProvider
         ],
     ];
 
+    /**
+     * Middleware map.
+     *
+     * @var array
+     */
+    protected array $middlewares = [
+        // ..
+    ];
+
+    /**
+     * Middleware route.
+     *
+     * @var array
+     */
     protected array $routeMiddleware = [
         // apiato User Authentication middleware for Web Pages
         'guest' => RedirectIfAuthenticated::class

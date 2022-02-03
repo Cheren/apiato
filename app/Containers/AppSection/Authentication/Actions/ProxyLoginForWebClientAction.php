@@ -2,19 +2,35 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
+use Lcobucci\JWT\Parser;
+use Illuminate\Support\Facades\DB;
+use App\Ship\Parents\Actions\Action;
+use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
+use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
+use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
+use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTask;
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
-use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
 use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyLoginPasswordGrantRequest;
-use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Facades\DB;
-use Lcobucci\JWT\Parser;
 
+/**
+ * Class ProxyLoginForWebClientAction
+ *
+ * @package App\Containers\AppSection\Authentication\Actions
+ */
 class ProxyLoginForWebClientAction extends Action
 {
+    /**
+     * Run action.
+     *
+     * @param   ProxyLoginPasswordGrantRequest $request
+     *
+     * @return  array
+     *
+     * @throws  LoginFailedException
+     * @throws  UserNotConfirmedException
+     */
     public function run(ProxyLoginPasswordGrantRequest $request): array
     {
         $sanitizedData = $request->sanitizeInput(
@@ -32,7 +48,11 @@ class ProxyLoginForWebClientAction extends Action
         $sanitizedData['grant_type'] = 'password';
         $sanitizedData['scope'] = '';
 
-        $responseContent = app(CallOAuthServerTask::class)->run($sanitizedData, $request->headers->get('accept-language'));
+        $responseContent = app(CallOAuthServerTask::class)->run(
+            $sanitizedData,
+            $request->headers->get('accept-language')
+        );
+
         $this->processEmailConfirmationIfNeeded($responseContent);
         $refreshCookie = app(MakeRefreshCookieTask::class)->run($responseContent['refresh_token']);
 
@@ -42,6 +62,27 @@ class ProxyLoginForWebClientAction extends Action
         ];
     }
 
+    /**
+     * Extract user from auth server response.
+     *
+     * @param   $response
+     *
+     * @return  mixed
+     */
+    private function extractUserFromAuthServerResponse($response)
+    {
+        $tokenId = app(Parser::class)->parse($response['access_token'])->claims()->get('jti');
+        $userAccessRecord = DB::table('oauth_access_tokens')->find($tokenId);
+        return User::find($userAccessRecord->user_id);
+    }
+
+    /**
+     * Process email confirmation if needed.
+     *
+     * @param   $response
+     *
+     * @throws  UserNotConfirmedException
+     */
     private function processEmailConfirmationIfNeeded($response): void
     {
         $user = $this->extractUserFromAuthServerResponse($response);
@@ -50,12 +91,5 @@ class ProxyLoginForWebClientAction extends Action
         if (!$isUserConfirmed) {
             throw new UserNotConfirmedException();
         }
-    }
-
-    private function extractUserFromAuthServerResponse($response)
-    {
-        $tokenId = app(Parser::class)->parse($response['access_token'])->claims()->get('jti');
-        $userAccessRecord = DB::table('oauth_access_tokens')->find($tokenId);
-        return User::find($userAccessRecord->user_id);
     }
 }

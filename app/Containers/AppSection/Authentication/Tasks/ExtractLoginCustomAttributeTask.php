@@ -2,11 +2,23 @@
 
 namespace App\Containers\AppSection\Authentication\Tasks;
 
-use App\Ship\Parents\Tasks\Task;
 use Illuminate\Support\Arr;
+use App\Ship\Parents\Tasks\Task;
 
+/**
+ * Class ExtractLoginCustomAttributeTask
+ *
+ * @package App\Containers\AppSection\Authentication\Tasks
+ */
 class ExtractLoginCustomAttributeTask extends Task
 {
+    /**
+     * Run action.
+     *
+     * @param   array $data
+     *
+     * @return  array
+     */
     public function run(array $data): array
     {
         $prefix = config('appSection-authentication.login.prefix', '');

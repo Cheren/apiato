@@ -3,6 +3,14 @@
 use Illuminate\Support\Arr;
 
 if (!function_exists('loginAttributeValidationRulesMerger')) {
+
+    /**
+     * Login attribute validation rules merger.
+     *
+     * @param   array $rules
+     *
+     * @return  array
+     */
     function loginAttributeValidationRulesMerger(array $rules): array
     {
         $prefix = config('appSection-authentication.login.prefix', '');
@@ -36,4 +44,5 @@ if (!function_exists('loginAttributeValidationRulesMerger')) {
 
         return $rules;
     }
+
 }

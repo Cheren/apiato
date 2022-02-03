@@ -2,20 +2,22 @@
 
 namespace App\Containers\AppSection\Authentication\Tests\Unit;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
+use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\User\Tests\TestCase;
 use App\Containers\AppSection\Authentication\Actions\WebLoginAction;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
-use App\Containers\AppSection\User\Models\User;
-use App\Containers\AppSection\User\Tests\TestCase;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
 
 /**
- * Class LoginTest.
+ * Class LoginTest
  *
  * @group authentication
  * @group unit
+ *
+ * @package App\Containers\AppSection\Authentication\Tests\Unit
  */
 class LoginTest extends TestCase
 {

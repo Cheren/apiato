@@ -2,17 +2,34 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
+use App\Ship\Parents\Actions\Action;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Authenticatable;
+use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\Authentication\Tasks\LoginTask;
+use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
 use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
 use App\Containers\AppSection\Authentication\Exceptions\UserNotConfirmedException;
 use App\Containers\AppSection\Authentication\Tasks\CheckIfUserEmailIsConfirmedTask;
 use App\Containers\AppSection\Authentication\Tasks\ExtractLoginCustomAttributeTask;
-use App\Containers\AppSection\Authentication\Tasks\LoginTask;
-use App\Containers\AppSection\Authentication\UI\WEB\Requests\LoginRequest;
-use App\Ship\Parents\Actions\Action;
-use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class WebLoginAction
+ *
+ * @package App\Containers\AppSection\Authentication\Actions
+ */
 class WebLoginAction extends Action
 {
+    /**
+     * Run action.
+     *
+     * @param   LoginRequest $request
+     *
+     * @return  User|Authenticatable|null
+     *
+     * @throws  LoginFailedException
+     * @throws  UserNotConfirmedException
+     */
     public function run(LoginRequest $request)
     {
         $sanitizedData = $request->sanitizeInput([

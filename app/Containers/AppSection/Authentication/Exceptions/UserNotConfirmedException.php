@@ -5,6 +5,11 @@ namespace App\Containers\AppSection\Authentication\Exceptions;
 use App\Ship\Parents\Exceptions\Exception;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class UserNotConfirmedException
+ *
+ * @package App\Containers\AppSection\Authentication\Exceptions
+ */
 class UserNotConfirmedException extends Exception
 {
     protected $code = Response::HTTP_CONFLICT;

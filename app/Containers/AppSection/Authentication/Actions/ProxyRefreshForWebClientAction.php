@@ -2,15 +2,31 @@
 
 namespace App\Containers\AppSection\Authentication\Actions;
 
-use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
-use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
-use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
-use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyRefreshRequest;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Support\Facades\Request;
+use App\Containers\AppSection\Authentication\Tasks\CallOAuthServerTask;
+use App\Containers\AppSection\Authentication\Tasks\MakeRefreshCookieTask;
+use App\Containers\AppSection\Authentication\Exceptions\LoginFailedException;
+use App\Containers\AppSection\Authentication\UI\API\Requests\ProxyRefreshRequest;
+use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
 
+/**
+ * Class ProxyRefreshForWebClientAction
+ *
+ * @package App\Containers\AppSection\Authentication\Actions
+ */
 class ProxyRefreshForWebClientAction extends Action
 {
+    /**
+     * Run action.
+     *
+     * @param   ProxyRefreshRequest $request
+     *
+     * @return  array
+     *
+     * @throws  RefreshTokenMissedException
+     * @throws  LoginFailedException
+     */
     public function run(ProxyRefreshRequest $request): array
     {
         $sanitizedData = $request->sanitizeInput([
@@ -27,12 +43,16 @@ class ProxyRefreshForWebClientAction extends Action
             throw new RefreshTokenMissedException();
         }
 
-        $responseContent = app(CallOAuthServerTask::class)->run($sanitizedData, $request->headers->get('accept-language'));
+        $responseContent = app(CallOAuthServerTask::class)->run(
+            $sanitizedData,
+            $request->headers->get('accept-language')
+        );
+
         $refreshCookie = app(MakeRefreshCookieTask::class)->run($responseContent['refresh_token']);
 
         return [
             'response_content' => $responseContent,
-            'refresh_cookie' => $refreshCookie,
+            'refresh_cookie' => $refreshCookie
         ];
     }
 }

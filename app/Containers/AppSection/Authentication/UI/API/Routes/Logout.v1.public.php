@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @apiGroup           OAuth2
  * @apiName            Logout
@@ -15,10 +16,9 @@
  * }
  */
 
-use App\Containers\AppSection\Authentication\UI\API\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Containers\AppSection\Authentication\UI\API\Controllers\Controller;
 
 Route::delete('logout', [Controller::class, 'logout'])
     ->name('api_authentication_logout')
     ->middleware(['auth:api']);
-

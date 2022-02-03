@@ -2,14 +2,16 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
 use App\Containers\AppSection\Authentication\Tests\ApiTestCase;
+use App\Containers\AppSection\Authentication\Exceptions\RefreshTokenMissedException;
 
 /**
  * Class ApiRefreshProxyTest
  *
- * @group authentication
  * @group api
+ * @group authentication
+ *
+ * @package App\Containers\AppSection\Authentication\UI\API\Tests\Functional
  */
 class ApiRefreshProxyTest extends ApiTestCase
 {

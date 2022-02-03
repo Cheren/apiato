@@ -2,14 +2,16 @@
 
 namespace App\Containers\AppSection\Authentication\UI\API\Tests\Functional;
 
-use App\Containers\AppSection\Authentication\Tests\ApiTestCase;
 use Illuminate\Support\Facades\Config;
+use App\Containers\AppSection\Authentication\Tests\ApiTestCase;
 
 /**
  * Class ApiLoginProxyTest
  *
- * @group authentication
  * @group api
+ * @group authentication
+ *
+ * @package App\Containers\AppSection\Authentication\UI\API\Tests\Functional
  */
 class ApiLoginProxyTest extends ApiTestCase
 {
