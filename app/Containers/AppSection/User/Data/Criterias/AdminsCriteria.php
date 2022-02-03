@@ -5,8 +5,23 @@ namespace App\Containers\AppSection\User\Data\Criterias;
 use App\Ship\Parents\Criterias\Criteria;
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 
+/**
+ * Class AdminsCriteria
+ *
+ * @package App\Containers\AppSection\User\Data\Criterias
+ */
 class AdminsCriteria extends Criteria
 {
+    /**
+     * Apply criteria in query repository.
+     *
+     * @param   $model
+     * @param   PrettusRepositoryInterface $repository
+     *
+     * @return  mixed
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function apply($model, PrettusRepositoryInterface $repository)
     {
         return $model->where('is_admin', true);

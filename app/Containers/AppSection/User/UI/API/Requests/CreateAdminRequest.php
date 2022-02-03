@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class CreateAdminRequest
+ *
+ * @package App\Containers\AppSection\User\UI\API\Requests
+ */
 class CreateAdminRequest extends Request
 {
     /**
@@ -29,6 +34,23 @@ class CreateAdminRequest extends Request
 
     ];
 
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -36,12 +58,5 @@ class CreateAdminRequest extends Request
             'password' => 'required|min:3|max:30',
             'name' => 'min:2|max:50',
         ];
-    }
-
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess',
-        ]);
     }
 }

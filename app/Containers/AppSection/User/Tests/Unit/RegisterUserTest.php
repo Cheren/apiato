@@ -2,17 +2,16 @@
 
 namespace App\Containers\AppSection\User\Tests\Unit;
 
-use App\Containers\AppSection\User\Actions\RegisterUserAction;
+use Illuminate\Support\Facades\App;
 use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\TestCase;
+use App\Containers\AppSection\User\Actions\RegisterUserAction;
 use App\Containers\AppSection\User\UI\API\Requests\RegisterUserRequest;
-use Illuminate\Support\Facades\App;
 
 /**
- * Class CreateUserTest.
+ * Class RegisterUserTest
  *
- * @group user
- * @group unit
+ * @package App\Containers\AppSection\User\Tests\Unit
  */
 class RegisterUserTest extends TestCase
 {

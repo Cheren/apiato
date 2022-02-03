@@ -2,16 +2,37 @@
 
 namespace App\Containers\AppSection\User\UI\CLI\Commands;
 
+use App\Ship\Parents\Commands\ConsoleCommand;
+use App\Ship\Exceptions\CreateResourceFailedException;
 use App\Containers\AppSection\User\Actions\CreateAdminAction;
 use App\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest;
-use App\Ship\Parents\Commands\ConsoleCommand;
 
+/**
+ * Class CreateAdminCommand
+ *
+ * @package App\Containers\AppSection\User\UI\CLI\Commands
+ */
 class CreateAdminCommand extends ConsoleCommand
 {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
     protected $signature = 'apiato:create:admin';
 
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
     protected $description = 'Create a new User with the ADMIN role';
 
+    /**
+     * Handle action.
+     *
+     * @throws  CreateResourceFailedException
+     */
     public function handle(): void
     {
         $username = $this->ask('Enter the username for this user');

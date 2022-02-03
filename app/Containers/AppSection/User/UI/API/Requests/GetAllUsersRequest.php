@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class GetAllUsersRequest
+ *
+ * @package App\Containers\AppSection\User\UI\API\Requests
+ */
 class GetAllUsersRequest extends Request
 {
     /**
@@ -29,17 +34,27 @@ class GetAllUsersRequest extends Request
 
     ];
 
-    public function rules(): array
-    {
-        return [
-
-        ];
-    }
-
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return $this->check([
             'hasAccess',
         ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+
+        ];
     }
 }

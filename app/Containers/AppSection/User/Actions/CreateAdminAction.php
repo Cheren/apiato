@@ -2,14 +2,29 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
-use App\Containers\AppSection\Authorization\Tasks\AssignUserToRoleTask;
-use App\Containers\AppSection\User\Models\User;
-use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
-use App\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest;
 use App\Ship\Parents\Actions\Action;
+use App\Containers\AppSection\User\Models\User;
+use App\Ship\Exceptions\CreateResourceFailedException;
+use App\Containers\AppSection\User\Tasks\CreateUserByCredentialsTask;
+use App\Containers\AppSection\Authorization\Tasks\AssignUserToRoleTask;
+use App\Containers\AppSection\User\UI\API\Requests\CreateAdminRequest;
 
+/**
+ * Class CreateAdminAction
+ *
+ * @package App\Containers\AppSection\User\Actions
+ */
 class CreateAdminAction extends Action
 {
+    /**
+     * Run action.
+     *
+     * @param   CreateAdminRequest $request
+     *
+     * @return  User
+     *
+     * @throws  CreateResourceFailedException
+     */
     public function run(CreateAdminRequest $request): User
     {
         $admin = app(CreateUserByCredentialsTask::class)->run(

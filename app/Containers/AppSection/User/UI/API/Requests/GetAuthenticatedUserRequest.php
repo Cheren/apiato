@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class GetAuthenticatedUserRequest
+ *
+ * @package App\Containers\AppSection\User\UI\API\Requests
+ */
 class GetAuthenticatedUserRequest extends Request
 {
     /**
@@ -29,17 +34,27 @@ class GetAuthenticatedUserRequest extends Request
         //'id',
     ];
 
-    public function rules(): array
-    {
-        return [
-            // 'name' => 'required|max:255'
-        ];
-    }
-
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return $this->check([
             'hasAccess',
         ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            // 'name' => 'required|max:255'
+        ];
     }
 }

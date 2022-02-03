@@ -2,21 +2,43 @@
 
 namespace App\Containers\AppSection\User\UI\API\Transformers;
 
-use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleTransformer;
-use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Transformers\Transformer;
 use League\Fractal\Resource\Collection;
+use App\Ship\Parents\Transformers\Transformer;
+use App\Containers\AppSection\User\Models\User;
+use App\Containers\AppSection\Authorization\UI\API\Transformers\RoleTransformer;
 
+/**
+ * Class UserTransformer
+ *
+ * @package App\Containers\AppSection\User\UI\API\Transformers
+ */
 class UserTransformer extends Transformer
 {
+    /**
+     * Resources that can be included if requested.
+     *
+     * @var array
+     */
     protected $availableIncludes = [
         'roles',
     ];
 
+    /**
+     * Include resources without needing it to be requested.
+     *
+     * @var array
+     */
     protected $defaultIncludes = [
 
     ];
 
+    /**
+     * Transform data.
+     *
+     * @param   User $user
+     *
+     * @return  array
+     */
     public function transform(User $user): array
     {
         $response = [
@@ -40,6 +62,13 @@ class UserTransformer extends Transformer
         return $response;
     }
 
+    /**
+     * Include roles.
+     *
+     * @param   User $user
+     *
+     * @return  Collection
+     */
     public function includeRoles(User $user): Collection
     {
         return $this->collection($user->roles, new RoleTransformer());

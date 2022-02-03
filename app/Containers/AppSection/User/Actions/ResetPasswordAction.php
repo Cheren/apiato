@@ -2,16 +2,28 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
-use App\Containers\AppSection\User\UI\API\Requests\ResetPasswordRequest;
-use App\Ship\Exceptions\InternalErrorException;
+use Illuminate\Support\Str;
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Exceptions\Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Str;
+use App\Ship\Parents\Exceptions\Exception;
+use App\Ship\Exceptions\InternalErrorException;
+use App\Containers\AppSection\User\UI\API\Requests\ResetPasswordRequest;
 
+/**
+ * Class ResetPasswordAction
+ *
+ * @package App\Containers\AppSection\User\Actions
+ */
 class ResetPasswordAction extends Action
 {
+    /**
+     * Run action.
+     *
+     * @param   ResetPasswordRequest $request
+     *
+     * @throws  InternalErrorException
+     */
     public function run(ResetPasswordRequest $request): void
     {
         $sanitizedData = $request->sanitizeInput([

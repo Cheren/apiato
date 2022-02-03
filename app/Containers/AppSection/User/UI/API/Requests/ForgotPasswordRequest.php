@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class ForgotPasswordRequest
+ *
+ * @package App\Containers\AppSection\User\UI\API\Requests
+ */
 class ForgotPasswordRequest extends Request
 {
     /**
@@ -29,18 +34,28 @@ class ForgotPasswordRequest extends Request
         // 'id',
     ];
 
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
             'email' => 'required|email|max:255',
             'reseturl' => 'required|max:255',
         ];
-    }
-
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess',
-        ]);
     }
 }

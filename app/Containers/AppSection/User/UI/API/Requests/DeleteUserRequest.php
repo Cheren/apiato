@@ -2,9 +2,14 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
-use App\Containers\AppSection\User\Traits\IsOwnerTrait;
 use App\Ship\Parents\Requests\Request;
+use App\Containers\AppSection\User\Traits\IsOwnerTrait;
 
+/**
+ * Class DeleteUserRequest
+ *
+ * @package App\Containers\AppSection\User\UI\API\Requests
+ */
 class DeleteUserRequest extends Request
 {
     use IsOwnerTrait;
@@ -32,17 +37,27 @@ class DeleteUserRequest extends Request
         'id',
     ];
 
-    public function rules(): array
-    {
-        return [
-            'id' => 'required|exists:users,id',
-        ];
-    }
-
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return $this->check([
             'hasAccess|isOwner',
         ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'id' => 'required|exists:users,id',
+        ];
     }
 }

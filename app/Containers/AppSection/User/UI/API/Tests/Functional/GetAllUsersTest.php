@@ -6,10 +6,9 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\ApiTestCase;
 
 /**
- * Class GetAllUsersTest.
+ * Class GetAllUsersTest
  *
- * @group user
- * @group api
+ * @package App\Containers\AppSection\User\UI\API\Tests\Functional
  */
 class GetAllUsersTest extends ApiTestCase
 {

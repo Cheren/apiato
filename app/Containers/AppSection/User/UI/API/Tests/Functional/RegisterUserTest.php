@@ -5,10 +5,9 @@ namespace App\Containers\AppSection\User\UI\API\Tests\Functional;
 use App\Containers\AppSection\User\Tests\ApiTestCase;
 
 /**
- * Class RegisterUserTest.
+ * Class RegisterUserTest
  *
- * @group user
- * @group api
+ * @package App\Containers\AppSection\User\UI\API\Tests\Functional
  */
 class RegisterUserTest extends ApiTestCase
 {

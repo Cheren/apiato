@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\User\Traits;
 
 use App\Containers\AppSection\Authentication\Tasks\GetAuthenticatedUserTask;
 
+/**
+ * Trait IsOwnerTrait
+ *
+ * @package App\Containers\AppSection\User\Traits
+ */
 trait IsOwnerTrait
 {
     /**

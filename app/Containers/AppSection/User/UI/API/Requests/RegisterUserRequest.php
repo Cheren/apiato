@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class RegisterUserRequest
+ *
+ * @package App\Containers\AppSection\User\UI\API\Requests
+ */
 class RegisterUserRequest extends Request
 {
     /**
@@ -29,6 +34,23 @@ class RegisterUserRequest extends Request
 
     ];
 
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -36,12 +58,5 @@ class RegisterUserRequest extends Request
             'password' => 'required|min:6|max:30',
             'name' => 'required|min:2|max:50',
         ];
-    }
-
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess',
-        ]);
     }
 }

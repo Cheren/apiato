@@ -1,8 +1,13 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
+// @codingStandardsIgnoreStart
+
+/**
+ * Class CreateUsersTable
+ */
 class CreateUsersTable extends Migration
 {
     /**
@@ -18,9 +23,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('gender')->nullable();
             $table->string('birth')->nullable();
-            $table->string('avatar', 100)->nullable();
-            $table->string('phone_number')->nullable()->unique();
-            $table->timestamp('phone_number_verified_at')->nullable();
+            $table->string('device')->nullable();
+            $table->string('platform')->nullable();
             $table->boolean('is_admin')->default(true);
             $table->rememberToken();
             $table->timestamps();

@@ -2,17 +2,32 @@
 
 namespace App\Containers\AppSection\User\Events;
 
-use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Events\Event;
 use Illuminate\Broadcasting\Channel;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Log;
+use App\Containers\AppSection\User\Models\User;
 
+/**
+ * Class UserRegisteredEvent
+ *
+ * @package App\Containers\AppSection\User\Events
+ */
 class UserRegisteredEvent extends Event implements ShouldQueue
 {
+    /**
+     * Hold user.
+     *
+     * @var User
+     */
     protected User $user;
 
+    /**
+     * UserRegisteredEvent constructor.
+     *
+     * @param User $user
+     */
     public function __construct(User $user)
     {
         $this->user = $user;
@@ -23,7 +38,8 @@ class UserRegisteredEvent extends Event implements ShouldQueue
      */
     public function handle(): void
     {
-        Log::info('New User registration. ID = ' . $this->user->getHashedKey() . ' | Email = ' . $this->user->email . '.');
+        $userHashKey = $this->user->getHashedKey();
+        Log::info('New User registration. ID = ' . $userHashKey . ' | Email = ' . $this->user->email . '.');
     }
 
     /**

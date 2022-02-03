@@ -2,13 +2,27 @@
 
 namespace App\Containers\AppSection\User\Tasks;
 
+use App\Ship\Parents\Tasks\Task;
+use App\Ship\Parents\Exceptions\Exception;
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Exceptions\InternalErrorException;
-use App\Ship\Parents\Exceptions\Exception;
-use App\Ship\Parents\Tasks\Task;
 
+/**
+ * Class CreatePasswordResetTask
+ *
+ * @package App\Containers\AppSection\User\Tasks
+ */
 class CreatePasswordResetTask extends Task
 {
+    /**
+     * Run action.
+     *
+     * @param   User $user
+     *
+     * @return  string
+     *
+     * @throws  InternalErrorException
+     */
     public function run(User $user): string
     {
         try {

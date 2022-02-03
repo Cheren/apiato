@@ -2,11 +2,24 @@
 
 namespace App\Containers\AppSection\User\Data\Seeders;
 
-use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 use App\Ship\Parents\Seeders\Seeder;
+use App\Ship\Exceptions\CreateResourceFailedException;
+use App\Containers\AppSection\Authorization\Tasks\CreatePermissionTask;
 
+// @codingStandardsIgnoreStart
+
+/**
+ * Class UserPermissionsSeeder_1
+ *
+ * @package App\Containers\AppSection\User\Data\Seeders
+ */
 class UserPermissionsSeeder_1 extends Seeder
 {
+    /**
+     * Run action.
+     *
+     * @throws  CreateResourceFailedException
+     */
     public function run(): void
     {
         // Default Permissions ----------------------------------------------------------

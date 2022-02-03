@@ -2,15 +2,30 @@
 
 namespace App\Containers\AppSection\User\Data\Factories;
 
-use App\Containers\AppSection\User\Models\User;
-use App\Ship\Parents\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use App\Ship\Parents\Factories\Factory;
+use App\Containers\AppSection\User\Models\User;
 
+/**
+ * Class UserFactory
+ *
+ * @package App\Containers\AppSection\User\Data\Factories
+ */
 class UserFactory extends Factory
 {
+    /**
+     * Hold model.
+     *
+     * @var string
+     */
     protected $model = User::class;
 
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
     public function definition(): array
     {
         static $password;
@@ -25,6 +40,13 @@ class UserFactory extends Factory
         ];
     }
 
+    /**
+     * State admin.
+     *
+     * @return UserFactory
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function admin(): UserFactory
     {
         return $this->state(function (array $attributes) {
@@ -34,6 +56,13 @@ class UserFactory extends Factory
         });
     }
 
+    /**
+     * State unverified.
+     *
+     * @return UserFactory
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function unverified(): UserFactory
     {
         return $this->state(function (array $attributes) {

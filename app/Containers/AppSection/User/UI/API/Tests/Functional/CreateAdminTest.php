@@ -6,10 +6,9 @@ use App\Containers\AppSection\User\Models\User;
 use App\Containers\AppSection\User\Tests\ApiTestCase;
 
 /**
- * Class CreateAdminTest.
+ * Class CreateAdminTest
  *
- * @group user
- * @group api
+ * @package App\Containers\AppSection\User\UI\API\Tests\Functional
  */
 class CreateAdminTest extends ApiTestCase
 {

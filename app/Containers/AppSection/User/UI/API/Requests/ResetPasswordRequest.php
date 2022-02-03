@@ -4,6 +4,11 @@ namespace App\Containers\AppSection\User\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
+/**
+ * Class ResetPasswordRequest
+ *
+ * @package App\Containers\AppSection\User\UI\API\Requests
+ */
 class ResetPasswordRequest extends Request
 {
     /**
@@ -31,6 +36,23 @@ class ResetPasswordRequest extends Request
         'password',
     ];
 
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return $this->check([
+            'hasAccess',
+        ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -38,12 +60,5 @@ class ResetPasswordRequest extends Request
             'email' => 'required|email|max:255',
             'password' => 'required|min:6|max:255',
         ];
-    }
-
-    public function authorize(): bool
-    {
-        return $this->check([
-            'hasAccess',
-        ]);
     }
 }

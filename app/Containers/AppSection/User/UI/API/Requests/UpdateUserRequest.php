@@ -2,9 +2,14 @@
 
 namespace App\Containers\AppSection\User\UI\API\Requests;
 
-use App\Containers\AppSection\User\Traits\IsOwnerTrait;
 use App\Ship\Parents\Requests\Request;
+use App\Containers\AppSection\User\Traits\IsOwnerTrait;
 
+/**
+ * Class UpdateUserRequest
+ *
+ * @package App\Containers\AppSection\User\UI\API\Requests
+ */
 class UpdateUserRequest extends Request
 {
     use IsOwnerTrait;
@@ -32,6 +37,26 @@ class UpdateUserRequest extends Request
         'id',
     ];
 
+    /**
+     * Authorize.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        // is this an admin who has access to permission `update-users`
+        // or the user is updating his own object (is the owner).
+
+        return $this->check([
+            'hasAccess|isOwner',
+        ]);
+    }
+
+    /**
+     * Rules.
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -41,15 +66,5 @@ class UpdateUserRequest extends Request
             'gender' => 'in:male,female,unspecified',
             'birth' => 'date_format:Ymd',
         ];
-    }
-
-    public function authorize(): bool
-    {
-        // is this an admin who has access to permission `update-users`
-        // or the user is updating his own object (is the owner).
-
-        return $this->check([
-            'hasAccess|isOwner',
-        ]);
     }
 }

@@ -5,9 +5,9 @@ namespace App\Containers\AppSection\User\Tests;
 use App\Containers\AppSection\User\Tests\TestCase as BaseTestCase;
 
 /**
- * Class ApiTestCase.
+ * Class ApiTestCase
  *
- * This is the container API TestCase class. Use this class to add your container specific API related helper functions.
+ * @package App\Containers\AppSection\User\Tests
  */
 class ApiTestCase extends BaseTestCase
 {

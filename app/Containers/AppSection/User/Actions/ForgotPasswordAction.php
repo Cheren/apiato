@@ -2,16 +2,31 @@
 
 namespace App\Containers\AppSection\User\Actions;
 
-use App\Containers\AppSection\User\Mails\UserForgotPasswordMail;
-use App\Containers\AppSection\User\Tasks\CreatePasswordResetTask;
-use App\Containers\AppSection\User\Tasks\FindUserByEmailTask;
-use App\Containers\AppSection\User\UI\API\Requests\ForgotPasswordRequest;
-use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Actions\Action;
 use Illuminate\Support\Facades\Mail;
+use App\Ship\Exceptions\NotFoundException;
+use App\Ship\Exceptions\InternalErrorException;
+use App\Containers\AppSection\User\Tasks\FindUserByEmailTask;
+use App\Containers\AppSection\User\Mails\UserForgotPasswordMail;
+use App\Containers\AppSection\User\Tasks\CreatePasswordResetTask;
+use App\Containers\AppSection\User\UI\API\Requests\ForgotPasswordRequest;
 
+/**
+ * Class ForgotPasswordAction
+ *
+ * @package App\Containers\AppSection\User\Actions
+ */
 class ForgotPasswordAction extends Action
 {
+    /**
+     * Run action.
+     *
+     * @param   ForgotPasswordRequest $request
+     *
+     * @throws  NotFoundException
+     *
+     * @throws  InternalErrorException
+     */
     public function run(ForgotPasswordRequest $request): void
     {
         $user = app(FindUserByEmailTask::class)->run($request->email);
